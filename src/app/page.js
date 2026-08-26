@@ -2,11 +2,6 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-<<<<<<< HEAD
-    <>
-      
-    </>
-=======
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Image
@@ -70,6 +65,5 @@ export default function Home() {
         </div>
       </main>
     </div>
->>>>>>> f5be4475a8e908b3015631d9ba44ab922fe43623
   );
 }
