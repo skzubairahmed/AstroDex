@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "astrodexv1",
+=======
+  "name": "astrodex",
+>>>>>>> f5be4475a8e908b3015631d9ba44ab922fe43623
   "version": "0.1.0",
   "private": true,
   "scripts": {
