@@ -2,16 +2,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #0B0F19;
+  --card-surface: #161F30;
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --accent-satellite: #06B6D4;
+  --accent-exoplanet: #FBBF24;
+  --accent-asteroid: #F43F5E;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-space-mono: var(--font-space-mono);
+  --color-bg-primary: var(--bg-primary);
+  --color-card-surface: var(--card-surface);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-satellite: var(--accent-satellite);
+  --color-exoplanet: var(--accent-exoplanet);
+  --color-asteroid: var(--accent-asteroid);
 }
 
 @media (prefers-color-scheme: dark) {
