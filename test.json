@@ -1,0 +1,27 @@
+[
+    {
+        "link":"/satellites/iss",
+        "name":"ISS",
+        "icon":"🛰️"
+    },
+    {
+        "link":"/exoplanets/kepler-2b",
+        "name":"Kepler 2B",
+        "icon":"🪐"
+    },
+    {
+        "link":"/asteroids/omua-mua",
+        "name":"Omua Mua",
+        "icon":"🌠"
+    },
+    {
+        "link":"/satellites/hubble",
+        "name":"Hubble",
+        "icon":"🛰️"
+    },
+    {
+        "link":"/satellites/james-web-telescope",
+        "name":"James Web Telescope",
+        "icon":"🛰️"
+    }
+]
