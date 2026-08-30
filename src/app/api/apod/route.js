@@ -20,6 +20,8 @@ const getApodData = unstable_cache(
                 return data
             }catch(e){
                 return e.message
+            }finally{
+                await client.close();
             }
     },
     ["apod-cache"],

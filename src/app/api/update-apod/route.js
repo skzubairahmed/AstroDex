@@ -9,7 +9,12 @@ let clientPromise;
 client = new MongoClient(uri);
 clientPromise = client.connect();
 
-export async function GET(){
+export async function GET(request){
+    let authHeader = request.headers.get("authorization");
+    if(authHeader !== `Bearer ${process.env.CRON_SECRET}`){
+        return Response.json({"message":"Unauthorized"}, {status:401});
+    }
+
     try{
         const client = await clientPromise;
         const db = client.db("astrodex");
@@ -34,5 +39,7 @@ export async function GET(){
         return Response.json({success:true, savedDate:apodData.date});
     }catch(e){
         return Response.json({success:false, error:e.message}, {status:500});
+    }finally{
+        await client.close();
     }
 }
