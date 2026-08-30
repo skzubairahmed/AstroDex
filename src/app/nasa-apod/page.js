@@ -51,7 +51,7 @@ export default function NasaApod() {
                     <Link href={apod.url} target="_blank" rel="noopener noreferrer">
                       <img 
                       src={apod.url}
-                      className="rounded-lg"
+                      className="rounded-lg w-full h-full object-cover"
                       />
                     </Link>
                   </div>

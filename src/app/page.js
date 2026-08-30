@@ -10,12 +10,20 @@ export default function Home() {
   let [bookmarks, setBookmarks] = useState([]);
   let [apod, setApod] = useState(null);
   let [loading, setLoading] = useState(true);
+  let [neo, setNeo] = useState(true);
+
+  function clearBookmarks(){
+    if(typeof window !== "undefined"){
+      setBookmarks([]);
+      window.localStorage.setItem("bookmarks", []);
+    }
+  }
 
   useEffect(() => {
     function getBookmarks(){
       if (typeof window !== "undefined") {
-        const sessionStorage = window.sessionStorage;
-        let saved = sessionStorage.getItem("bookmarks");
+        const localStorage = window.localStorage;
+        let saved = localStorage.getItem("bookmarks");
         if(saved){
           try{
             const parsed = JSON.parse(saved);
@@ -63,10 +71,13 @@ export default function Home() {
             <div className="w-full h-fit flex flex-col md:flex-row gap-4">
             
               <div className="bg-card-surface border border-satellite/20 p-4 w-full rounded-xl h-83 flex flex-col gap-4 overflow-hidden shadow-lg">
-                <div className="overflow-hidden">
+                <div className="overflow-hidden flex flex-row gap-2 items-center">
                   <p className="text-lg text-text-primary font-bold">
                     Bookmarks
                   </p>
+                  <button className="border-1 border-satellite px-2 py-1 w-fit h-fit rounded-lg" onClick={() => clearBookmarks()}>
+                    CLEAR
+                  </button>
                 </div>
                 <div className="flex flex-col gap-2 overflow-y-auto max-h-[400px]">
                   {
@@ -115,8 +126,9 @@ export default function Home() {
 
             <div className="w-full h-90 bg-card-surface border-1 rounded-lg border-satellite/20 px-3 py-2 flex flex-col gap-3">
               <p className="text-text-primary font-bold text-lg">
-                Near Earth Objects (TOP 10)
+                Near Earth Objects (Random Selection)
               </p>
+              
             </div>
           </div>
         </main>
