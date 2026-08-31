@@ -28,7 +28,8 @@ export async function GET(request){
             "title":apodData.title,
             "explaination":apodData.explanation,
             "url":apodData.url,
-            "copyright":apodData.copyright
+            "copyright":apodData.copyright,
+            "media_type":apodData.media_type
         };
 
         await apod.updateOne(

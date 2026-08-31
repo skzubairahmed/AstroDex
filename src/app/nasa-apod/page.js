@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -19,6 +19,7 @@ export default function NasaApod() {
         setLoading(false);
       }catch(e){
         setApod(null);
+        setLoading(false);
       }
     }
 
@@ -34,6 +35,17 @@ export default function NasaApod() {
       </div>
     )
   }
+
+  if(!apod){
+    return(
+      <div className="bg-bg-primary m-0 p-0 flex flex-col items-center justify-center w-screen h-screen overflow-hidden">
+        <p className="text-text-primary text-xl font-mono">
+          FAILED TO LOAD APOD DATA.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <>
       <div className="p-0 m-0 w-screen flex flex-col h-screen bg-bg-primary overflow-hidden">
@@ -42,31 +54,43 @@ export default function NasaApod() {
           <SideBar />
           <main className="w-full flex-1 min-h-1 flex flex-col p-4 overflow-y-auto pb-24">
             <div className="flex w-full flex-col gap-3">
-              <div className="w-full h-fit border-1 border-satellite/20 rounded-lg p-4 flex flex-col gap-3">
+              <div className="w-full h-fit border border-satellite/20 rounded-lg p-4 flex flex-col gap-3">
                 <p className="text-text-primary font-bold text-lg text-wrap">
                   🖼️ NASA Astronomy Picture Of the Day: {apod.title}
                 </p>
                 <div className="w-full h-fit flex justify-center">
-                  <div className="w-fit h-fit border-2 border-satellite/20 hover:border-satellite transition-color rounded-lg">
-                    <Link href={apod.url} target="_blank" rel="noopener noreferrer">
-                      <img 
-                      src={apod.url}
-                      className="rounded-lg w-full h-full object-cover"
-                      />
-                    </Link>
+                  <div className="w-fit h-fit border-2 border-satellite/20 hover:border-satellite transition-colors rounded-lg overflow-hidden">
+                    {
+                      apod.media_type === "image" ? (
+                        <Link href={apod.url} target="_blank" rel="noopener noreferrer">
+                          <img 
+                            src={apod.url}
+                            alt={apod.title}
+                            className="rounded-lg w-full h-full object-cover"
+                          />
+                        </Link>
+                      ) : (
+                        <video className="w-full h-full rounded-lg object-cover" autoPlay muted controls loop playsInline>
+                          <source type="video/mp4" src={apod.url} />
+                          Your browser does not support the video tag.
+                        </video>
+                      )
+                    }
                   </div>
                 </div>
-                <div className="w-full h-fit border-1 border-satellite/20 rounded-xl p-3">
+                <div className="w-full h-fit border border-satellite/20 rounded-xl p-3">
                   <p className="text-text-primary">
                     <b>Date:</b> {apod.date}
                   </p>
 
-                  <p className="text-text-primary">
-                    <b>Copyright:</b> {apod.copyright}
-                  </p>
+                  {apod.copyright && (
+                    <p className="text-text-primary">
+                      <b>Copyright:</b> {apod.copyright}
+                    </p>
+                  )}
                   <br/>
                   <p className="text-text-primary">
-                    <b>Explanaition:</b> <br/>{apod.explaination}
+                    <b>Explanation:</b> <br/>{apod.explaination}
                   </p>
                 </div>
               </div>
