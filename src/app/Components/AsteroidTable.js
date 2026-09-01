@@ -1,11 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function PaginatedAsteroidTable({asteroids, itemsPerPage}){
     let [currentPage, setCurrentPage] = useState(1);
     let [bookmarks, setBookmarks] = useState([]);
     let totalPages = Math.ceil(asteroids.length / itemsPerPage);
+    const router = useRouter();
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentData = asteroids.slice(startIndex, startIndex + itemsPerPage);
@@ -73,6 +75,11 @@ export default function PaginatedAsteroidTable({asteroids, itemsPerPage}){
                                         {
                                             isBookmarked ? <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#F3F4F6"><path d="M713-600 600-713l56-57 57 57 141-142 57 57-198 198ZM200-120v-640q0-33 23.5-56.5T280-840h240v80H280v518l200-86 200 86v-278h80v400L480-240 200-120Zm80-640h240-240Z"/></svg></span> : <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#F3F4F6"><path d="M200-120v-640q0-33 23.5-56.5T280-840h240v80H280v518l200-86 200 86v-278h80v400L480-240 200-120Zm80-640h240-240Zm400 160v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z"/></svg></span>
                                         }
+                                    </button>
+                                </td>
+                                <td className="py-3 px-3">
+                                    <button className="px-2 py-2 bg-satellite/30 border border-satellite rounded-lg" onClick={() => router.push(`/asteroids/${item.spkid}`)}>
+                                        View
                                     </button>
                                 </td>
                             </tr>

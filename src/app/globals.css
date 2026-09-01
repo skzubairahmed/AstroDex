@@ -9,6 +9,7 @@
   --accent-satellite: #06B6D4;
   --accent-exoplanet: #FBBF24;
   --accent-asteroid: #F43F5E;
+  --accent-green: #10B981;
 }
 
 @theme inline {
@@ -19,6 +20,7 @@
   --color-satellite: var(--accent-satellite);
   --color-exoplanet: var(--accent-exoplanet);
   --color-asteroid: var(--accent-asteroid);
+  --color-green: var(--accent-green);
 }
 
 @media (prefers-color-scheme: dark) {

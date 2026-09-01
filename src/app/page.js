@@ -110,15 +110,20 @@ export default function Home() {
                   <p className="text-lg text-text-primary font-bold">
                     🖼️ NASA APOD: {apod?.title || "Astronomy Picture"} (PREVIEW)
                   </p>
-                  {apod?.url && (
-                    <div className="w-full h-64 overflow-hidden rounded-lg relative border border-satellite/20">
-                      <img
-                        alt={apod.title || "APOD"}
-                        src={apod.url}
-                        className="w-full h-full"
-                      />
-                    </div>
-                  )}
+                  {apod.media_type === "image" ? (
+                        <Link href={apod.url} target="_blank" rel="noopener noreferrer">
+                          <img 
+                            src={apod.url}
+                            alt={apod.title}
+                            className="rounded-lg w-full h-fit object-cover flex-1"
+                          />
+                        </Link>
+                      ) : (
+                        <video className="w-full h-full rounded-lg" autoPlay muted controls loop playsInline>
+                          <source type="video/mp4" src={apod.url} />
+                          Your browser does not support the video tag.
+                        </video>
+                      )}
                 </div>
               </div>
 
