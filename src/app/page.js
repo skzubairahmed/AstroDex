@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import Navbar from "./Components/Navbar";
 import SideBar from "./Components/SideBar";
+import PreviewAsteroidsTable from "./Components/PreviewAsteroidsTable";
 
 export default function Home() {
   let [bookmarks, setBookmarks] = useState([]);
@@ -75,7 +76,7 @@ export default function Home() {
                   <p className="text-lg text-text-primary font-bold">
                     Bookmarks
                   </p>
-                  <button className="border-1 border-satellite px-2 py-1 w-fit h-fit rounded-lg" onClick={() => clearBookmarks()}>
+                  <button className="border-1 bg-transparent border-satellite px-2 py-1 w-fit h-fit rounded-lg" onClick={() => clearBookmarks()}>
                     CLEAR
                   </button>
                 </div>
@@ -115,7 +116,7 @@ export default function Home() {
                           <img 
                             src={apod.url}
                             alt={apod.title}
-                            className="rounded-lg w-full h-fit object-cover flex-1"
+                            className="rounded-lg w-full h-64 object-fit flex-1"
                           />
                         </Link>
                       ) : (
@@ -133,7 +134,7 @@ export default function Home() {
               <p className="text-text-primary font-bold text-lg">
                 Near Earth Objects (Random Selection)
               </p>
-              
+              <PreviewAsteroidsTable />
             </div>
           </div>
         </main>

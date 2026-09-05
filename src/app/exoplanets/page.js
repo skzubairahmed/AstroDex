@@ -9,7 +9,7 @@ export default function Exoplanets() {
         <div className="flex md:flex-row flex-1 overflow-hidden">
           <SideBar />
           <main className="w-full h-full flex-col p-2 overflow-y-auto">
-            
+           
           </main>
         </div>
       </div>
